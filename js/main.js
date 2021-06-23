@@ -18,16 +18,16 @@ giveRandomNumber(3, 4);
 
 //Вторая функция
 
-function randomInteger(min, max, fixedFractionValue) {
+function randomFractionalValue(min, max, fixedFractionValue) {
   if (max <= min || min <= 0) {
     throw new RangeError('Данные некорректны');
   }
-  const rand = min + Math.random() * (max + 1 - min);
+  const rand = min + Math.random() * (max - min);
   return Number(rand.toFixed(fixedFractionValue));
 
 }
 
-randomInteger(3, 9, 3);
+randomFractionalValue(3, 9, 3);
 /*
 let giveRandomCoordinate = function (min, max) {
   (max <= min || min <= 0) ? ('Неверно введены данные') : giveRandomCoordinate = Math.random() * max;
