@@ -1,52 +1,74 @@
-/*let max = 100;
-
-let random = Math.round(Math.random(max) * max);
-
-console.log(random);*/
 //Первая функия
 
 function giveRandomNumber(min, max) {
-  if (max <= min || min <= 0) {
+  if (max <= min || min < 0) {
     throw new RangeError('Данные некорректны');
   }
   const rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
-
 }
 
-giveRandomNumber(3, 4);
+//giveRandomNumber(3, 4);
 
 //Вторая функция
 
 function randomFractionalValue(min, max, fixedFractionValue) {
-  if (max <= min || min <= 0) {
+  if (max <= min || min < 0) {
     throw new RangeError('Данные некорректны');
   }
   const rand = min + Math.random() * (max - min);
   return Number(rand.toFixed(fixedFractionValue));
-
 }
 
-randomFractionalValue(3, 9, 3);
-/*
-let giveRandomCoordinate = function (min, max) {
-  (max <= min || min <= 0) ? ('Неверно введены данные') : giveRandomCoordinate = Math.random() * max;
-  return giveRandomCoordinate;
+//randomFractionalValue(3, 9, 3);
+
+//Новый раздел
+
+let xx = 0;
+//const tenGeneratedAds
+const getAvatarImgUrl = () => `img/avatars/user${(++xx).toString().padStart(2, '0')}.png`;
+
+const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+
+const checkInOutTime = ['12:00', '13:00', '14:00'];
+
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
+const description = ['большое помещение', 'маленькое помещение'];
+
+const links = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+
+const location = {
+  lat: randomFractionalValue(35.65000, 35.70000, 5),
+  lng: randomFractionalValue(139.70000, 139.80000, 5),
 };
+// Начало функции
 
-giveRandomCoordinate(2, 100);
 
-*/
-/*
-let random;
-let giveRandomNumber = function (min, max) {
-  if (max <= min || min < 0) {
-    return ('Неверно введены данные');
-  } else {
-    random = Math.round(Math.random() * (max - min)) + min;
-  }
+const getMockOffer = () => ({
+  author: {
+    avatar: getAvatarImgUrl(),
+  },
+  offer: {
+    title: 'Вариант жилья',
+    address: `${location.lat}, ${location.lng}`,
+    price: giveRandomNumber(2000, 6000),
+    type: types[giveRandomNumber(0, 4)],
+    rooms: giveRandomNumber(1, 4),
+    guests: giveRandomNumber(1, 8),
+    checkin: checkInOutTime[giveRandomNumber(0, 2)],
+    checkout: checkInOutTime[giveRandomNumber(0, 2)],
+    features: features[giveRandomNumber(0, 5)],
+    description: description[giveRandomNumber(0, 1)],
+    photos: links[giveRandomNumber(0, 2)],
+  },
+  location: location,
+});
+
+let arrHousingOptions = [];
+
+for (let i = 0; i < 10; i++) {
+  arrHousingOptions.push(getMockOffer());
 };
-
-giveRandomNumber(1, 12);
-console.log(random);
-*/
