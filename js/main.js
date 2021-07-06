@@ -25,7 +25,7 @@ function randomFractionalValue(min, max, fixedFractionValue) {
 //Новый раздел
 
 let xx = 0;
-//const tenGeneratedAds
+
 const getAvatarImgUrl = () => `img/avatars/user${(++xx).toString().padStart(2, '0')}.png`;
 
 const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
@@ -40,35 +40,39 @@ const links = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/kek
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
-const location = {
-  lat: randomFractionalValue(35.65000, 35.70000, 5),
-  lng: randomFractionalValue(139.70000, 139.80000, 5),
-};
+
 // Начало функции
 
+const getMockOffer = () => {
+  const location = {
+    lat: randomFractionalValue(35.65000, 35.70000, 5),
+    lng: randomFractionalValue(139.70000, 139.80000, 5),
+  };
+  return {
+    author: {
+      avatar: getAvatarImgUrl(),
+    },
+    offer: {
+      title: 'Вариант жилья',
+      address: `${location.lat}, ${location.lng}`,
+      price: giveRandomNumber(2000, 6000),
+      type: types[giveRandomNumber(0, 4)],
+      rooms: giveRandomNumber(1, 4),
+      guests: giveRandomNumber(1, 8),
+      checkin: checkInOutTime[giveRandomNumber(0, 2)],
+      checkout: checkInOutTime[giveRandomNumber(0, 2)],
+      features: features[giveRandomNumber(0, 5)],
+      description: description[giveRandomNumber(0, 1)],
+      photos: links[giveRandomNumber(0, 2)],
+    },
+    location: location,
+  };
+};
 
-const getMockOffer = () => ({
-  author: {
-    avatar: getAvatarImgUrl(),
-  },
-  offer: {
-    title: 'Вариант жилья',
-    address: `${location.lat}, ${location.lng}`,
-    price: giveRandomNumber(2000, 6000),
-    type: types[giveRandomNumber(0, 4)],
-    rooms: giveRandomNumber(1, 4),
-    guests: giveRandomNumber(1, 8),
-    checkin: checkInOutTime[giveRandomNumber(0, 2)],
-    checkout: checkInOutTime[giveRandomNumber(0, 2)],
-    features: features[giveRandomNumber(0, 5)],
-    description: description[giveRandomNumber(0, 1)],
-    photos: links[giveRandomNumber(0, 2)],
-  },
-  location: location,
-});
-
-let arrHousingOptions = [];
+const arrHousingOptions = [];
 
 for (let i = 0; i < 10; i++) {
-  arrHousingOptions.push(getMockOffer());
+  arrHousingOptions.push(arrHousingOptions);
 };
+
+console.log(getMockOffer());
