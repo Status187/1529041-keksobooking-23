@@ -71,8 +71,8 @@ const getMockOffer = () => {
 
 const arrHousingOptions = [];
 
-for (let i = 0; i < 10; i++) {
-  arrHousingOptions.push(arrHousingOptions);
-};
+for (let io = 0; io < 10; io++) {
+  arrHousingOptions.push(getMockOffer());
+}
 
-console.log(getMockOffer());
+console.log(arrHousingOptions);
