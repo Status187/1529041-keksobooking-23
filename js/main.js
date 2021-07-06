@@ -32,18 +32,22 @@ const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
 const checkInOutTime = ['12:00', '13:00', '14:00'];
 
-const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-
 const description = ['большое помещение', 'маленькое помещение'];
 
 const links = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
 
 // Начало функции
 
+//console.log(lin);
+
 const getMockOffer = () => {
+  const getRandomFeatures = features.sort(() => Math.random() - 0.5).slice(0, giveRandomNumber(1, 6));
+  const getRandomPhotos = links.sort(() => Math.random() - 0.5).slice(0, giveRandomNumber(1, 3));
   const location = {
     lat: randomFractionalValue(35.65000, 35.70000, 5),
     lng: randomFractionalValue(139.70000, 139.80000, 5),
@@ -61,9 +65,9 @@ const getMockOffer = () => {
       guests: giveRandomNumber(1, 8),
       checkin: checkInOutTime[giveRandomNumber(0, 2)],
       checkout: checkInOutTime[giveRandomNumber(0, 2)],
-      features: features[giveRandomNumber(0, 5)],
+      features: getRandomFeatures,
       description: description[giveRandomNumber(0, 1)],
-      photos: links[giveRandomNumber(0, 2)],
+      photos: getRandomPhotos,
     },
     location: location,
   };
@@ -75,4 +79,4 @@ for (let io = 0; io < 10; io++) {
   arrHousingOptions.push(getMockOffer());
 }
 
-console.log(arrHousingOptions);
+//console.log(arrHousingOptions);
